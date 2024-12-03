@@ -25,8 +25,13 @@ closeChatBtn.addEventListener('click', () => {
   openChatBtn.style.display = 'block';
 });
 
-// Handle user input
-sendBtn.addEventListener('click', () => {
+// Handle user input and sending messages
+sendBtn.addEventListener('click', handleUserInput);
+userInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') handleUserInput();
+});
+
+function handleUserInput() {
   const userMessage = userInput.value.trim();
   if (userMessage) {
     addMessage(userMessage, 'user');
@@ -34,7 +39,7 @@ sendBtn.addEventListener('click', () => {
     const botMessage = getBestMatchResponse(userMessage);
     setTimeout(() => addMessage(botMessage, 'bot'), 500);
   }
-});
+}
 
 function addMessage(message, sender) {
   const messageDiv = document.createElement('div');
