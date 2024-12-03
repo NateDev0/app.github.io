@@ -290,3 +290,8 @@ body {
   background-color: #5865f2;
 }
 
+/* For live agent login state */
+.live-agent-logged-in {
+  background-color: #4CAF50;
+  color: white;
+}
