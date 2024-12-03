@@ -11,7 +11,7 @@
   <button id="open-chat-btn" class="open-chat-btn" aria-label="Open Chat">💬</button>
 
   <!-- Chat Popup -->
-  <div id="chat-popup">
+  <div id="chat-popup" style="display:none;">
     <div class="chat-header">
       <span>Support Chat</span>
       <button id="close-chat" title="Close Chat" aria-label="Close Chat">&times;</button>
@@ -23,6 +23,25 @@
       <input id="user-input" type="text" placeholder="Type a message..." />
       <button id="send-btn" aria-label="Send Message">Send</button>
     </div>
+  </div>
+
+  <!-- Live Agent Login Popup -->
+  <div id="live-agent-login-popup" style="display:none;">
+    <div class="login-container">
+      <h3>Live Agent Login</h3>
+      <input id="live-agent-username" type="text" placeholder="Username" />
+      <input id="live-agent-password" type="password" placeholder="Password" />
+      <button id="live-agent-login-submit" aria-label="Login as Live Agent">Login</button>
+    </div>
+  </div>
+
+  <!-- Live Agent Dashboard -->
+  <div id="live-agent-dashboard" style="display:none;">
+    <h2>Live Agent Dashboard</h2>
+    <div id="active-chats">
+      <p>No active chats yet.</p>
+    </div>
+    <!-- Additional features for agent can be added here (e.g., chat list, pick chat to respond) -->
   </div>
 
   <script src="script.js"></script>
