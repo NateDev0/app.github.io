@@ -4,14 +4,24 @@ const closeChatBtn = document.getElementById('close-chat');
 const sendBtn = document.getElementById('send-btn');
 const userInput = document.getElementById('user-input');
 const chatBox = document.getElementById('chat-box');
-
-// Predefined FAQs
+const liveAgentLoginPopup = document.getElementById('live-agent-login-popup');
+const liveAgentLoginSubmitBtn = document.getElementById('live-agent-login-submit');
+const liveAgentUsernameInput = document.getElementById('live-agent-username');
+const liveAgentPasswordInput = document.getElementById('live-agent-password');
+const liveAgentDashboard = document.getElementById('live-agent-dashboard');
 const faqs = [
   { question: "hello", answer: "Hi there! How can I assist you?" },
   { question: "how are you", answer: "I'm doing great, thank you for asking!" },
   { question: "what is your name", answer: "I'm your virtual assistant. How can I help?" },
   { question: "bye", answer: "Goodbye! Have a great day!" },
 ];
+
+// Live Agent Authentication Data
+const liveAgents = {
+  "agentUser": "agentPassword", // Replace with real live agent credentials
+};
+
+let isLiveAgentLoggedIn = false;
 
 // Open chat popup
 openChatBtn.addEventListener('click', () => {
@@ -60,24 +70,22 @@ function getBestMatchResponse(userMessage) {
     }
   });
   
-  // If the user asks to speak to a live agent
+  // Check if user wants to speak to a live agent
   if (userMessage.toLowerCase().includes("speak to a live agent")) {
     return "Would you like to speak to a live agent? (yes/no)";
   }
 
   // If the user says "yes" to the live agent
   if (userMessage.toLowerCase() === "yes") {
-    return "You can either call us at 1-800-123-4567 or sign in for live chat with a live agent.";
+    return "You can either call us at 1-800-123-4567 or sign in for live chat with a live agent. Please enter your username and password in the format: (username: yourUsername password: yourPassword)";
   }
 
-  // Handle 'no' or any other message
+  // If the user says "no"
   if (userMessage.toLowerCase() === "no") {
     return "Okay, let me know if you need any assistance!";
   }
 
-  return bestScore > 0.5
-    ? bestMatch
-    : "I'm not sure I understand. Would you like to speak with a live agent?";
+  return bestScore > 0.5 ? bestMatch : "I'm not sure I understand. Would you like to speak with a live agent?";
 }
 
 function similarity(str1, str2) {
@@ -87,31 +95,10 @@ function similarity(str1, str2) {
   return matches.length / Math.max(words1.length, words2.length);
 }
 
-
-const liveAgentLoginPopup = document.getElementById('live-agent-login-popup');
-const liveAgentLoginBtn = document.getElementById('live-agent-login-btn');
-const liveAgentUsernameInput = document.getElementById('live-agent-username');
-const liveAgentPasswordInput = document.getElementById('live-agent-password');
-const liveAgentLoginSubmitBtn = document.getElementById('live-agent-login-submit');
-const liveAgentDashboard = document.getElementById('live-agent-dashboard');
-
-// User Authentication Data for Live Agents
-const liveAgents = {
-  "agentUser": "agentPassword", // Replace with real live agent credentials
-};
-
-let isLiveAgentLoggedIn = false;
-
-// Show live agent login popup when clicked
-liveAgentLoginBtn.addEventListener('click', () => {
-  liveAgentLoginPopup.style.display = 'block';
-});
-
-// Handle live agent login
+// Live Agent Login Handling
 liveAgentLoginSubmitBtn.addEventListener('click', () => {
-  const username = liveAgentUsernameInput.value.trim();
-  const password = liveAgentPasswordInput.value.trim();
-
+  const userInputText = userInput.value.trim();
+  const [username, password] = parseCredentials(userInputText);
   if (validateLiveAgentCredentials(username, password)) {
     isLiveAgentLoggedIn = true;
     liveAgentLoginPopup.style.display = 'none';
@@ -121,6 +108,15 @@ liveAgentLoginSubmitBtn.addEventListener('click', () => {
     alert("Invalid login credentials. Please try again.");
   }
 });
+
+function parseCredentials(inputText) {
+  const regex = /\(username:\s*(.*?)\s*password:\s*(.*?)\)/;
+  const match = inputText.match(regex);
+  if (match) {
+    return [match[1], match[2]];
+  }
+  return ["", ""];
+}
 
 function validateLiveAgentCredentials(username, password) {
   return liveAgents[username] && liveAgents[username] === password;
