@@ -8,20 +8,20 @@
 </head>
 <body>
   <!-- Open Chat Button -->
-  <button id="open-chat-btn" class="open-chat-btn">💬</button>
+  <button id="open-chat-btn" class="open-chat-btn" aria-label="Open Chat">💬</button>
 
   <!-- Chat Popup -->
   <div id="chat-popup">
     <div class="chat-header">
       <span>Support Chat</span>
-      <button id="close-chat" title="Close">&times;</button>
+      <button id="close-chat" title="Close Chat" aria-label="Close Chat">&times;</button>
     </div>
     <div class="chat-content">
       <div id="chat-box" class="chat-box"></div>
     </div>
     <div class="chat-input-container">
       <input id="user-input" type="text" placeholder="Type a message..." />
-      <button id="send-btn">Send</button>
+      <button id="send-btn" aria-label="Send Message">Send</button>
     </div>
   </div>
 
