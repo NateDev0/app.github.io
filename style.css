@@ -1,53 +1,81 @@
-#chatbot-circle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    cursor: pointer;
-}
-
-#chat-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+body {
+  font-family: Arial, sans-serif;
 }
 
 #chat-popup {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 300px;
-    height: 400px;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 300px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 1000;
 }
 
-#chat-header {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
 }
 
-#chat-body {
-    height: 300px;
-    overflow-y: auto;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    padding: 5px;
+#close-chat {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
 
-#chat-content {
-    margin-bottom: 10px;
+.chat-box {
+  height: 200px;
+  overflow-y: auto;
+  margin-bottom: 10px;
 }
 
-#chat-input {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 5px;
+.chat-message {
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+  max-width: 80%;
 }
 
-button {
-    padding: 5px 10px;
-    margin: 5px;
+.bot {
+  background-color: #f1f1f1;
+  align-self: flex-start;
+}
+
+.user {
+  background-color: #cce5ff;
+  align-self: flex-end;
+}
+
+#user-input {
+  width: 80%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#send-btn {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.open-chat-btn {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 15px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
 }
