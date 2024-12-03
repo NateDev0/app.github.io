@@ -30,8 +30,8 @@ body {
   background-color: #202225;
   color: #ffffff;
   padding: 10px 15px;
-  font-size: 22px; /* Make text larger */
-  font-family: 'Arial Black', sans-serif; /* Apply Arial Black font */
+  font-size: 24px; /* Increased text size */
+  font-family: 'Arial Black', sans-serif; /* Applied Arial Black font */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,13 +41,16 @@ body {
 
 /* Close Chat Button */
 #close-chat {
-  background: none; /* Remove background */
-  border: none; /* Remove borders */
-  color: #ffffff; /* Set color to white */
-  font-size: 20px; /* Adjust size */
+  background: none; /* No background */
+  border: none; /* No border */
+  color: #ffffff; /* White color */
+  font-size: 24px; /* Adjusted size for better visibility */
   cursor: pointer;
   font-weight: bold;
-  padding: 0; /* Remove padding */
+  padding: 0; /* Removed padding */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #close-chat:hover {
@@ -177,3 +180,4 @@ body {
 ::-webkit-scrollbar-track {
   background-color: #2f3136;
 }
+
