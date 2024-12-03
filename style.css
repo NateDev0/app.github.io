@@ -1,12 +1,3 @@
-/* General Styles */
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #282c34;
-  color: #ffffff;
-}
-
 /* Chat Popup */
 #chat-popup {
   display: none;
@@ -15,41 +6,15 @@ body {
   right: 20px;
   width: 33%;
   max-width: 400px;
-  height: 50%;
+  height: 60%;
   background-color: #36393f;
   border: 1px solid #23272a;
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-}
-
-/* Chat Header */
-.chat-header {
-  background-color: #202225;
-  color: #ffffff;
-  padding: 10px 15px;
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
-
-#close-chat {
-  background: none;
-  border: none;
-  color: #ffffff;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-#close-chat:hover {
-  color: #f04747;
+  padding: 15px;
 }
 
 /* Chat Content Box */
@@ -62,20 +27,13 @@ body {
   overflow-y: auto;
   border: 1px solid #23272a;
   border-radius: 10px;
-  margin: 10px;
 }
 
-.chat-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
+/* Chat Messages */
 .chat-message {
-  padding: 10px 15px;
+  padding: 12px 18px;
   border-radius: 12px;
   font-size: 16px;
-  line-height: 1.5;
   max-width: 80%;
   word-wrap: break-word;
 }
@@ -92,7 +50,7 @@ body {
   align-self: flex-end;
 }
 
-/* Input and Send Button */
+/* Input Section */
 .chat-input-container {
   display: flex;
   align-items: center;
@@ -105,19 +63,10 @@ body {
   flex-grow: 1;
   padding: 10px;
   border: 1px solid #23272a;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #2f3136;
   color: #ffffff;
   font-size: 16px;
-}
-
-#user-input::placeholder {
-  color: #b9bbbe;
-}
-
-#user-input:focus {
-  border-color: #5865f2;
-  outline: none;
 }
 
 #send-btn {
@@ -125,10 +74,13 @@ body {
   background-color: #5865f2;
   color: #ffffff;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #send-btn:hover {
@@ -140,7 +92,7 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 20px;
+  padding: 15px;
   background-color: #000000;
   color: #ffffff;
   border-radius: 50%;
@@ -149,24 +101,8 @@ body {
   cursor: pointer;
   border: none;
   outline: none;
-  transition: background-color 0.3s ease;
 }
 
 .open-chat-btn:hover {
   background-color: #1a1a1a;
 }
-
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #5865f2;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #2f3136;
-}
-
