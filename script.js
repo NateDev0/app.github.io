@@ -13,6 +13,11 @@ const faqs = [
   { question: "bye", answer: "Goodbye! Have a great day!" },
 ];
 
+// User Authentication Data (can be replaced with a real database or API)
+const users = {
+  "exampleUser": "examplePassword", // Replace with actual usernames and passwords
+};
+
 // Open chat popup
 openChatBtn.addEventListener('click', () => {
   chatPopup.style.display = 'flex';
@@ -59,6 +64,27 @@ function getBestMatchResponse(userMessage) {
       bestMatch = faq.answer;
     }
   });
+  
+  // If the user asks to speak to a live agent
+  if (userMessage.toLowerCase().includes("speak to a live agent")) {
+    return "Would you like to connect to a live agent? (yes/no)";
+  }
+
+  // Handle 'yes' response to live agent request
+  if (userMessage.toLowerCase() === "yes") {
+    return "Please provide your username and password in the format: (username: yourUsername password: yourPassword)";
+  }
+
+  // Handle username and password input for live agent access
+  if (userMessage.startsWith("(username:") && userMessage.includes("password:")) {
+    const credentials = parseCredentials(userMessage);
+    if (validateCredentials(credentials.username, credentials.password)) {
+      return "Login successful! Connecting you to a live agent...";
+    } else {
+      return "Invalid credentials. Please try again.";
+    }
+  }
+
   return bestScore > 0.5
     ? bestMatch
     : "I'm not sure I understand. Would you like to speak with a live agent?";
@@ -70,3 +96,14 @@ function similarity(str1, str2) {
   const matches = words1.filter((word) => words2.includes(word));
   return matches.length / Math.max(words1.length, words2.length);
 }
+
+function parseCredentials(userMessage) {
+  const username = userMessage.match(/\(username:\s*(\S+)\s*/)[1];
+  const password = userMessage.match(/password:\s*(\S+)\)/)[1];
+  return { username, password };
+}
+
+function validateCredentials(username, password) {
+  return users[username] && users[username] === password;
+}
+
