@@ -1,28 +1,35 @@
+/* General Styles */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background-color: #282c34; /* Discord-like dark background */
+  color: #ffffff;
 }
 
+/* Chat Popup */
 #chat-popup {
   display: none;
   position: fixed;
   bottom: 20px;
   right: 20px;
   width: 350px;
-  background-color: #fff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #36393f; /* Discord dark grey */
+  border: 1px solid #23272a;
   border-radius: 10px;
-  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Chat Header */
 .chat-header {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #202225; /* Discord header color */
+  color: #ffffff;
   padding: 10px 15px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
@@ -32,83 +39,98 @@ body {
 #close-chat {
   background: none;
   border: none;
-  color: #fff;
-  font-size: 22px;
+  color: #ffffff;
+  font-size: 20px;
   cursor: pointer;
 }
 
 #close-chat:hover {
-  color: #f8d7da;
+  color: #f04747; /* Discord red */
 }
 
+/* Chat Box */
 .chat-box {
-  height: 250px;
-  overflow-y: auto;
+  flex-grow: 1;
   padding: 10px;
-  background-color: #f8f9fa;
+  background-color: #2f3136; /* Discord message area background */
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border-top: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
 }
 
 .chat-message {
-  padding: 10px 15px;
-  border-radius: 20px;
+  padding: 8px 12px;
+  border-radius: 12px;
   font-size: 14px;
   line-height: 1.5;
-  max-width: 80%;
+  max-width: 75%;
+  word-wrap: break-word;
 }
 
 .bot {
-  background-color: #e9ecef;
-  color: #212529;
+  background-color: #5865f2; /* Discord blue */
+  color: #ffffff;
   align-self: flex-start;
 }
 
 .user {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #3ba55d; /* Discord green */
+  color: #ffffff;
   align-self: flex-end;
 }
 
-#user-input {
-  width: calc(100% - 80px);
+/* Input and Send Button */
+.chat-input-container {
+  display: flex;
+  align-items: center;
   padding: 10px;
-  margin: 10px;
-  border-radius: 25px;
-  border: 1px solid #ced4da;
-  outline: none;
+  background-color: #202225; /* Match header color */
+  border-top: 1px solid #23272a;
+}
+
+#user-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #23272a;
+  border-radius: 5px;
+  background-color: #2f3136;
+  color: #ffffff;
   font-size: 14px;
 }
 
+#user-input::placeholder {
+  color: #b9bbbe; /* Placeholder text */
+}
+
 #user-input:focus {
-  border-color: #007bff;
+  border-color: #5865f2; /* Discord blue */
+  outline: none;
 }
 
 #send-btn {
-  background-color: #007bff;
-  color: #fff;
+  margin-left: 10px;
+  background-color: #5865f2; /* Discord blue */
+  color: #ffffff;
   border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  margin-right: 10px;
+  padding: 10px 15px;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
 }
 
 #send-btn:hover {
-  background-color: #0056b3;
+  background-color: #4752c4; /* Slightly darker blue */
 }
 
+/* Open Chat Button */
 .open-chat-btn {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 15px 20px;
-  background-color: #007bff;
-  color: #fff;
+  padding: 15px;
+  background-color: #5865f2; /* Discord blue */
+  color: #ffffff;
   border-radius: 50%;
   font-size: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -119,18 +141,19 @@ body {
 }
 
 .open-chat-btn:hover {
-  background-color: #0056b3;
+  background-color: #4752c4;
 }
 
+/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #007bff;
+  background-color: #5865f2; /* Discord blue */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background-color: #2f3136;
 }
