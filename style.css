@@ -181,3 +181,112 @@ body {
   background-color: #2f3136;
 }
 
+/* Live Agent Login Popup */
+#live-agent-login-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background-color: #36393f;
+  border: 1px solid #23272a;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1100;
+}
+
+.live-agent-login-header {
+  text-align: center;
+  color: #ffffff;
+  font-size: 24px;
+  font-family: 'Arial Black', sans-serif;
+  margin-bottom: 15px;
+}
+
+.live-agent-login-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#live-agent-username,
+#live-agent-password {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #23272a;
+  background-color: #2f3136;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+#live-agent-username::placeholder,
+#live-agent-password::placeholder {
+  color: #b9bbbe;
+}
+
+#live-agent-username:focus,
+#live-agent-password:focus {
+  border-color: #5865f2;
+  outline: none;
+}
+
+#live-agent-login-submit {
+  background-color: #5865f2;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+#live-agent-login-submit:hover {
+  background-color: #4752c4;
+}
+
+/* Live Agent Dashboard */
+#live-agent-dashboard {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #2f3136;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1100;
+}
+
+.live-agent-dashboard-header {
+  color: #ffffff;
+  font-size: 24px;
+  font-family: 'Arial Black', sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.live-agent-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.live-agent-channel {
+  background-color: #36393f;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.live-agent-channel:hover {
+  background-color: #5865f2;
+}
+
