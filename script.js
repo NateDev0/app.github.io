@@ -13,11 +13,6 @@ const faqs = [
   { question: "bye", answer: "Goodbye! Have a great day!" },
 ];
 
-// User Authentication Data (can be replaced with a real database or API)
-const users = {
-  "exampleUser": "examplePassword", // Replace with actual usernames and passwords
-};
-
 // Open chat popup
 openChatBtn.addEventListener('click', () => {
   chatPopup.style.display = 'flex';
@@ -67,22 +62,17 @@ function getBestMatchResponse(userMessage) {
   
   // If the user asks to speak to a live agent
   if (userMessage.toLowerCase().includes("speak to a live agent")) {
-    return "Would you like to connect to a live agent? (yes/no)";
+    return "Would you like to speak to a live agent? (yes/no)";
   }
 
-  // Handle 'yes' response to live agent request
+  // If the user says "yes" to the live agent
   if (userMessage.toLowerCase() === "yes") {
-    return "Please provide your username and password in the format: (username: yourUsername password: yourPassword)";
+    return "You can either call us at 1-800-123-4567 or sign in for live chat with a live agent.";
   }
 
-  // Handle username and password input for live agent access
-  if (userMessage.startsWith("(username:") && userMessage.includes("password:")) {
-    const credentials = parseCredentials(userMessage);
-    if (validateCredentials(credentials.username, credentials.password)) {
-      return "Login successful! Connecting you to a live agent...";
-    } else {
-      return "Invalid credentials. Please try again.";
-    }
+  // Handle 'no' or any other message
+  if (userMessage.toLowerCase() === "no") {
+    return "Okay, let me know if you need any assistance!";
   }
 
   return bestScore > 0.5
@@ -97,13 +87,41 @@ function similarity(str1, str2) {
   return matches.length / Math.max(words1.length, words2.length);
 }
 
-function parseCredentials(userMessage) {
-  const username = userMessage.match(/\(username:\s*(\S+)\s*/)[1];
-  const password = userMessage.match(/password:\s*(\S+)\)/)[1];
-  return { username, password };
-}
 
-function validateCredentials(username, password) {
-  return users[username] && users[username] === password;
-}
+const liveAgentLoginPopup = document.getElementById('live-agent-login-popup');
+const liveAgentLoginBtn = document.getElementById('live-agent-login-btn');
+const liveAgentUsernameInput = document.getElementById('live-agent-username');
+const liveAgentPasswordInput = document.getElementById('live-agent-password');
+const liveAgentLoginSubmitBtn = document.getElementById('live-agent-login-submit');
+const liveAgentDashboard = document.getElementById('live-agent-dashboard');
 
+// User Authentication Data for Live Agents
+const liveAgents = {
+  "agentUser": "agentPassword", // Replace with real live agent credentials
+};
+
+let isLiveAgentLoggedIn = false;
+
+// Show live agent login popup when clicked
+liveAgentLoginBtn.addEventListener('click', () => {
+  liveAgentLoginPopup.style.display = 'block';
+});
+
+// Handle live agent login
+liveAgentLoginSubmitBtn.addEventListener('click', () => {
+  const username = liveAgentUsernameInput.value.trim();
+  const password = liveAgentPasswordInput.value.trim();
+
+  if (validateLiveAgentCredentials(username, password)) {
+    isLiveAgentLoggedIn = true;
+    liveAgentLoginPopup.style.display = 'none';
+    liveAgentDashboard.style.display = 'block'; // Show live agent dashboard
+    alert("Live Agent Logged In!");
+  } else {
+    alert("Invalid login credentials. Please try again.");
+  }
+});
+
+function validateLiveAgentCredentials(username, password) {
+  return liveAgents[username] && liveAgents[username] === password;
+}
