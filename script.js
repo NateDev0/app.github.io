@@ -11,3 +11,4 @@ document.getElementById('close-chat').addEventListener('click', function() {
     const chatPopup = document.getElementById('chat-popup');
     chatPopup.style.display = 'none';
 });
+
