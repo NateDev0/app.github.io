@@ -31,6 +31,8 @@ document.getElementById('send-btn').addEventListener('click', function() {
     }
 });
 
+
+
 document.getElementById('clear-chat-btn').addEventListener('click', function() {
     const chatContent = document.getElementById('chat-content');
     chatContent.innerHTML = '';
