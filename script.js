@@ -63,6 +63,14 @@ function processMessage(userMessage) {
     } else {
       addMessage("Invalid credentials. Please try again.", "bot");
     }
+  } else if (userMessage.toLowerCase() === 'liveagent') {
+    // Handle the 'liveagent' command
+    addMessage("You have requested to speak with a live agent. Redirecting to the dashboard...", "bot");
+    setTimeout(() => {
+      // Hide the chat popup and show the live agent dashboard
+      chatPopup.style.display = 'none';
+      liveAgentDashboard.style.display = 'block';
+    }, 1000);
   } else {
     const botResponse = getBotResponse(userMessage);
     setTimeout(() => addMessage(botResponse, "bot"), 500);
@@ -95,5 +103,5 @@ function getBotResponse(userMessage) {
   ];
 
   const faq = faqs.find(f => userMessage.toLowerCase().includes(f.question));
- return faq ? faq.answer : "I'm not sure I understand. Would you like to speak with a live agent? You can call (206) 342-8631 to speak to someone on the phone or say 'liveagent' if you want to talk to a person now.";
+  return faq ? faq.answer : "I'm not sure I understand. Would you like to speak with a live agent? You can call (206) 342-8631 to speak to someone on the phone or say 'liveagent' if you want to talk to a person now.";
 }
