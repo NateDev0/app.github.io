@@ -95,5 +95,5 @@ function getBotResponse(userMessage) {
   ];
 
   const faq = faqs.find(f => userMessage.toLowerCase().includes(f.question));
-  return faq ? faq.answer : "I'm not sure I understand. Would you like to speak with a live agent? You can call (206) 342-8631 to speak to someone on the phone or say 'liveagent' if you want to talk to a person now.;
+ return faq ? faq.answer : "I'm not sure I understand. Would you like to speak with a live agent? You can call (206) 342-8631 to speak to someone on the phone or say 'liveagent' if you want to talk to a person now.";
 }
